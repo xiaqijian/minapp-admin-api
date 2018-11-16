@@ -1,20 +1,13 @@
 const Koa = require('koa')
 const config = require('./config/default')
-const mysql = require('./mysql')
+const router = require('./router')
 
 const app =  new Koa()
 
+app.use(router.routes()).use(router.allowedMethods())
 
-// app.use(json())
-app.use(async (ctx) => {
-    let data = await mysql.query()
-    ctx.body = {
-        "code": 1,
-        "data": data,
-        "mesg": 'ok'
-    }
-    
-})
+ 
+
 
 
 app.listen(config.port)

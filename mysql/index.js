@@ -13,9 +13,10 @@ class Mysql {
     constructor () {
 
     }
-    query () {
+    query (name = 'javascript', limit = 20) {
       return new Promise((resolve, reject) => {
-        pool.query('SELECT * from taobao', function (error, results, fields) {
+        const querytext ="SELECT * from "+name + ' limit '+limit;
+        pool.query(querytext, function (error, results, fields) {
             if (error) {
                 throw error
             };
@@ -25,6 +26,21 @@ class Mysql {
       })
        
     }
+    queryId (name = 'javascript', id = '14776801081') {
+      return new Promise((resolve, reject) => {
+        pool.query('SELECT * from '+name+' where BINARY id='+id, function (error, results, fields) {
+            if (error) {
+                throw error
+            };
+            resolve(results)
+            // console.log('The solution is: ', results[0].solution);
+        });
+      })
+       
+    }
+
 }
+
+
 
 module.exports = new Mysql()

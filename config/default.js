@@ -4,9 +4,9 @@ const config = {
   
     // 数据库配置
     database: {
-      DATABASE: 'ceshi',
-      USERNAME: 'root',
-      PASSWORD: '1234',
+      DATABASE: 'minapp',
+      USERNAME: 'minapp',
+      PASSWORD: 'minapp123xia',
       PORT: '3306',
       HOST: 'localhost'
     }
