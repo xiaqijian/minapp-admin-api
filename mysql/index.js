@@ -20,7 +20,11 @@ class Mysql {
             if (error) {
                 throw error
             };
-            resolve(results)
+            let data = {
+              'sort': name,
+              'data': results
+            }
+          resolve(data)
             // console.log('The solution is: ', results[0].solution);
         });
       })

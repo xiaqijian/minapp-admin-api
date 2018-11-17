@@ -6,13 +6,15 @@ let home = new Router()
 
 // 子路由1
 home.get('/', async ( ctx )=>{
-    let data = await mysql.queryId()
-    let cleanData = util.CleanData(data)
-    ctx.body = {
-        "code": 1,
-        "data": cleanData,
-        "mesg": 'ok'
-    }
+    // let datas = await mysql.queryId()
+    // let cleanData = util.CleanData(datas.data)
+    // ctx.body = {
+    //     "code": 1,
+    //     "data": cleanData,
+    //     "sort": datas.sort,
+    //     "mesg": 'ok'
+    // }
+    ctx.body ="idnex"
 })
 
 
@@ -30,21 +32,37 @@ let taobao = new Router()
 taobao.get('/index', async ( ctx )=>{
     const obj = ctx.query
     const arr = Object.keys(obj)
-    let data = [];
+    let datas;
     if(arr < 1) {
-        data = await mysql.query()
+        datas = await mysql.query()
     }else {
-        data = await mysql.query(obj.sort, obj.limit)
+        datas = await mysql.query(obj.sort, obj.limit)
     }
     
-    let cleanData = util.CleanData(data)
+    let cleanData = util.CleanData(datas.data)
     ctx.body = {
         "code": 1,
         "data": cleanData,
+        "sort": datas.sort,
         "mesg": 'ok'
     }
 }).get('/item', async ( ctx )=>{
-  ctx.body = 'helloworld page!'
+    const obj = ctx.query
+    const arr = Object.keys(obj)
+    let datas;
+    if (arr < 1) {
+        datas = await mysql.queryId()
+    } else {
+        datas = await mysql.queryId(obj.sort, obj.id)
+    }
+
+    let cleanData = util.CleanData(datas)
+    ctx.body = {
+        "code": 1,
+        "data": cleanData,
+        // "sort": datas.sort,
+        "mesg": 'ok'
+    }
 })
 
 // 装载所有子路由
