@@ -8,7 +8,7 @@ const config = {
       USERNAME: 'minapp',
       PASSWORD: 'minapp123xia',
       PORT: '3306',
-      HOST: 'localhost'
+      HOST: 'blog.zhinenganquan.cn'
     }
   }
   
